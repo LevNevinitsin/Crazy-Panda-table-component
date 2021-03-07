@@ -24,7 +24,6 @@
 }
 
 .pagination {
-  display: flex;
   width: max-content;
   max-width: 80%;
   margin: 0 auto 5px;
@@ -61,14 +60,6 @@
 .pagination__button--number:disabled {
   color: var(--black);
   font-weight: bold;
-}
-
-.pagination__button--arrow {
-  align-self: center;
-}
-
-.pagination__button--arrow:disabled {
-  color: var(--black);
 }
 
 .table {

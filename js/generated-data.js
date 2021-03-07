@@ -1,7 +1,7 @@
 import { NAMES } from './static-data.js'
 import { getRandomInteger, getRandomArrayElement } from './util.js';
 
-const ELEMENTS_NUMBER = 340;
+const ELEMENTS_NUMBER = 1340;
 
 const generateData = (elementsNumber) => {
   const data = [];

@@ -2,7 +2,6 @@ import { createElement } from './util.js';
 import { table } from './table.js';
 
 let pagination;
-let paginationCount;
 let paginationList;
 
 const getCurrentPage = () => {
@@ -10,7 +9,7 @@ const getCurrentPage = () => {
 }
 
 const createPaginationList = (elementsNumber, maxElementsNumber) => {
-  paginationCount = Math.ceil(elementsNumber / maxElementsNumber);
+  const paginationCount = Math.ceil(elementsNumber / maxElementsNumber);
   for (let i = 1; i <= paginationCount; i++) {
     const paginationItem = createElement('li', 'pagination__item');
     const numberButton = createElement('button', 'pagination__button', 'pagination__button--number');
@@ -48,7 +47,6 @@ const updatePagination = (component, elementsNumber, maxElementsNumber) => {
 }
 
 export {
-  pagination,
   paginationList,
   createPagination,
   updatePagination,

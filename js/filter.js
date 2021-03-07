@@ -1,5 +1,4 @@
 import { createElement } from './util.js';
-import { sourceData } from './generated-data.js';
 import { sortData } from './sort-data.js';
 import { sortedBy } from './table.js';
 
@@ -7,7 +6,6 @@ const LABEL_TEXT = 'Filter: ';
 const FILTER_TYPE = 'text';
 
 let filter;
-let filteredData = sourceData;
 
 const filterData = (data, request) => {
   let result = data;
@@ -34,4 +32,4 @@ const createFilter = () => {
   return filterBox;
 }
 
-export { filter, filteredData, createFilter, filterData }
+export { filter, createFilter, filterData }

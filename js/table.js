@@ -1,5 +1,4 @@
 import { createElement } from './util.js';
-import { getCurrentPage } from './pagination.js';
 
 const UP = '▲';
 const DOWN = '▼';
@@ -94,4 +93,4 @@ const createTable = (data, maxElementsNumber, pageNumber = 1) => {
   return table;
 }
 
-export { UP, sortedBy, head, updateHead, drawBody, body, table, createTable, getCurrentPage };
+export { UP, sortedBy, head, updateHead, body, drawBody, table, createTable };

@@ -1,0 +1,15 @@
+.DS_Store
+.idea
+.editorconfig
+.eslintrc
+package*
+*.ai
+*.log
+*.pdf
+*.psd
+*.sublime*
+build/js/
+node_modules/
+npm-debug.log*
+Thumbs.db
+.vscode/

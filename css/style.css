@@ -1,0 +1,113 @@
+:root {
+  --transparent: transparent;
+
+  --black: #000000;
+  --dark-grey: #888888;
+  --grey: #bbbbbb;
+  --light-grey: #dddddd;
+  --very-light-grey: #e9e9e9;
+  --lightest-grey: #f0f0f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.component {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.component__filter {
+  width: max-content;
+  margin: 0 auto 5px;
+}
+
+.pagination {
+  display: flex;
+  width: max-content;
+  max-width: 80%;
+  margin: 0 auto 5px;
+}
+
+.pagination__list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0 5px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination__button {
+  padding: 10px;
+  color: var(--grey);
+  border: none;
+  border-radius: 10px;
+  background: none;
+}
+
+.pagination__button:not(:disabled):hover {
+  cursor: pointer;
+  color: var(--dark-grey);
+  background-color: var(--very-light-grey);
+}
+
+.pagination__button:not(:disabled):active {
+  background-color: var(--lightest-grey);
+}
+
+.pagination__button--number:disabled {
+  color: var(--black);
+  font-weight: bold;
+}
+
+.pagination__button--arrow {
+  align-self: center;
+}
+
+.pagination__button--arrow:disabled {
+  color: var(--black);
+}
+
+.table {
+  width: max-content;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.table__td,
+.table__th {
+  border: 1px solid var(--grey);
+}
+
+.table__td,
+.table__th {
+  padding: 3px 10px;
+}
+
+.table__th:hover {
+  background-color: var(--very-light-grey);
+  cursor: pointer;
+}
+
+.table__th:active {
+  background-color: var(--lightest-grey);
+}
+
+.table__arrow {
+  color: var(--very-light-grey);
+}
+
+.table__arrow--active {
+  color: var(--black);
+}
+
+.table__th:hover .table__arrow {
+  color: var(--dark-grey);
+}
+
+.table__th:active .table__arrow {
+  color: var(--grey);
+}

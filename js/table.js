@@ -1,7 +1,5 @@
 import { createElement } from './util.js';
-import { sortData } from './sort-data.js';
-import { filteredData } from './filter.js';
-import { paginationList } from './pagination.js';
+import { getCurrentPage } from './pagination.js';
 
 const UP = '▲';
 const DOWN = '▼';
@@ -11,12 +9,8 @@ let head;
 let body;
 let sortedBy;
 
-const getCurrentPage = () => {
-  return parseInt(paginationList.querySelector('.pagination__button--number:disabled').textContent)
-}
+const updateHead = (element) => {
 
-const onHeadClick = (maxElementsNumber) => (evt) => {
-  const element = evt.target.closest('.table__th');
   const arrow = element.children[0];
 
   if (element.classList.contains('table__th--active')) {
@@ -33,18 +27,9 @@ const onHeadClick = (maxElementsNumber) => (evt) => {
   sortedBy = element;
 
   element.classList.add('table__th--active', 'table__th--ascending');
-
-  body.remove();
-
-  const sortedData = sortData(filteredData, element);
-  drawBody(sortedData, maxElementsNumber, getCurrentPage());
 }
 
-const setHeadListeners = (maxElementsNumber) => {
-  head.addEventListener('click', onHeadClick(maxElementsNumber));
-}
-
-const getHead = (data, maxElementsNumber) => {
+const getHead = (data) => {
   head = createElement('thead');
   const tr = createElement('tr');
 
@@ -62,8 +47,6 @@ const getHead = (data, maxElementsNumber) => {
 
   tr.appendChild(trContent);
   head.appendChild(tr);
-
-  setHeadListeners(maxElementsNumber);
 
   return head;
 }
@@ -105,10 +88,10 @@ const createTable = (data, maxElementsNumber, pageNumber = 1) => {
 
   table = createElement('table', 'table');
 
-  table.appendChild(getHead(data, maxElementsNumber));
+  table.appendChild(getHead(data));
   drawBody(data, maxElementsNumber, pageNumber);
 
   return table;
 }
 
-export { UP, sortedBy, drawBody, body, table, createTable };
+export { UP, sortedBy, head, updateHead, drawBody, body, table, createTable, getCurrentPage };

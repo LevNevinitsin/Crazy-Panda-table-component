@@ -1,8 +1,7 @@
 import { createElement } from './util.js';
 import { sourceData } from './generated-data.js';
 import { sortData } from './sort-data.js';
-import { updatePagination } from './pagination.js';
-import { sortedBy, drawBody, body } from './table.js';
+import { sortedBy } from './table.js';
 
 const LABEL_TEXT = 'Filter: ';
 const FILTER_TYPE = 'text';
@@ -35,16 +34,4 @@ const createFilter = () => {
   return filterBox;
 }
 
-const onFilterInput = (maxElementsNumber) => (evt) => {
-  body.remove();
-  const request = evt.target.value;
-  filteredData = filterData(sourceData, request);
-  updatePagination(filteredData.length, maxElementsNumber);
-  drawBody(filteredData, maxElementsNumber, 1);
-}
-
-const createFilterListener = (maxElementsNumber) => {
-  filter.addEventListener('input', onFilterInput(maxElementsNumber));
-}
-
-export { filteredData, createFilter, createFilterListener }
+export { filter, filteredData, createFilter, filterData }

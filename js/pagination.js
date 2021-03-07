@@ -1,7 +1,5 @@
 import { createElement } from './util.js';
-import { filteredData } from './filter.js';
-import { drawBody, body, table } from './table.js';
-import { component } from './component.js';
+import { table } from './table.js';
 
 const LEFT = '◀';
 const RIGHT = '▶';
@@ -12,9 +10,12 @@ let leftArrow;
 let rightArrow;
 let paginationList;
 
-const clearComponent = () => {
-  body.remove();
-  paginationList.querySelector('.pagination__button--number:disabled').disabled = false;
+const getCurrentPage = () => {
+  return parseInt(paginationList.querySelector('.pagination__button--number:disabled').textContent)
+}
+
+const updatePageNumber = (button) => {
+  pageNumber = parseInt(button.textContent);
 }
 
 const disableNumber = () => {
@@ -34,9 +35,7 @@ const disableRightArrow = () => {
   if (pageNumber === paginationCount) { rightArrow.disabled = true }
 }
 
-const turnPage = (direction, maxElementsNumber) => {
-  clearComponent();
-
+const updatePaginationState = (direction) => {
   if (direction === LEFT) {
     pageNumber--;
     disableLeftArrow();
@@ -48,16 +47,6 @@ const turnPage = (direction, maxElementsNumber) => {
   }
 
   disableNumber();
-
-  drawBody(filteredData, maxElementsNumber, pageNumber);
-}
-
-const onLeftArrowClick = (maxElementsNumber) => () => {
-  turnPage(LEFT, maxElementsNumber);
-}
-
-const onRightArrowClick = (maxElementsNumber) => () => {
-  turnPage(RIGHT, maxElementsNumber);
 }
 
 const manageArrows = () => {
@@ -65,25 +54,6 @@ const manageArrows = () => {
   enableRightArrow();
   disableLeftArrow();
   disableRightArrow();
-}
-
-const onPaginationListClick = (maxElementsNumber) => (evt) => {
-  if (evt.target.nodeName === 'BUTTON') {
-    const button = evt.target;
-    clearComponent();
-    pageNumber = parseInt(button.textContent);
-
-    manageArrows();
-
-    drawBody(filteredData, maxElementsNumber, pageNumber);
-    button.disabled = true;
-  }
-}
-
-const setListeners = (leftArrow, paginationList, rightArrow, maxElementsNumber) => {
-  rightArrow.addEventListener('click', onRightArrowClick(maxElementsNumber));
-  leftArrow.addEventListener('click', onLeftArrowClick(maxElementsNumber));
-  paginationList.addEventListener('click', onPaginationListClick(maxElementsNumber));
 }
 
 const createArrow = (arrow, direction, parent) => {
@@ -122,7 +92,6 @@ const createPagination = (elementsNumber, maxElementsNumber) => {
   rightArrow = createArrow(rightArrow, RIGHT, paginationContent)
 
   pagination.appendChild(paginationContent);
-  setListeners(leftArrow, paginationList, rightArrow, maxElementsNumber);
 
   return pagination;
 }
@@ -137,7 +106,7 @@ const updatePaginationList = (elementsNumber, maxElementsNumber) => {
   pagination.insertBefore(paginationList, rightArrow)
 }
 
-const updatePagination = (elementsNumber, maxElementsNumber) => {
+const updatePagination = (component, elementsNumber, maxElementsNumber) => {
   if (component.contains(pagination)) {
     pagination.remove();
   }
@@ -147,4 +116,17 @@ const updatePagination = (elementsNumber, maxElementsNumber) => {
   }
 }
 
-export { paginationList, createPagination, updatePagination };
+export {
+  LEFT,
+  RIGHT,
+  pagination,
+  paginationList,
+  createPagination,
+  leftArrow,
+  rightArrow,
+  updatePaginationState,
+  updatePagination,
+  getCurrentPage,
+  manageArrows,
+  updatePageNumber
+};

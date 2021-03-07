@@ -40,15 +40,11 @@ head.addEventListener('click', (evt) => {
   drawBody(sortData(filteredData, attribute), MAX_ELEMENTS_NUMBER, getCurrentPage());
 });
 
-const resetContent = () => {
-  body.remove();
-  paginationList.querySelector('.pagination__button--number:disabled').disabled = false;
-}
-
 paginationList.addEventListener('click', (evt) => {
   if (evt.target.nodeName === 'BUTTON') {
     const button = evt.target;
-    resetContent();
+    body.remove();
+    paginationList.querySelector('.pagination__button--number:disabled').disabled = false;
     button.disabled = true;
 
     drawBody(filteredData, MAX_ELEMENTS_NUMBER, getCurrentPage());

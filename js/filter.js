@@ -9,14 +9,17 @@ let filter;
 
 const filterData = (data, request) => {
   let result = data;
+
   if (request) {
     result = data.filter((entry) => {
       return Object.values(entry).some((value) => value.toString().includes(request))
     })
   }
+
   if (sortedBy) {
     sortData(result, sortedBy);
   }
+
   return result;
 }
 
@@ -26,7 +29,6 @@ const createFilter = () => {
   label.textContent = LABEL_TEXT;
   filter = createElement('input', 'component__input');
   filter.type = FILTER_TYPE;
-
   label.appendChild(filter);
   filterBox.appendChild(label);
   return filterBox;

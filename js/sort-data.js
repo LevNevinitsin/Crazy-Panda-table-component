@@ -26,7 +26,7 @@ const sortData = (data, element) => {
     }
   }
 
-  return data.sort(cb)
+  return data.sort(cb);
 }
 
 export { sortData };

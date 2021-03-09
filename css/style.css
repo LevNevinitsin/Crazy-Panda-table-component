@@ -13,6 +13,12 @@
   box-sizing: border-box;
 }
 
+.page__body {
+  font-family: Verdana, sans-serif;
+  font-size: 14px;
+  line-height: 24px;
+}
+
 .component {
   width: 80%;
   margin: 0 auto;
@@ -20,13 +26,27 @@
 
 .component__filter {
   width: max-content;
-  margin: 0 auto 5px;
+  margin: 0 auto 10px;
+}
+
+.component__input {
+  padding: 2px 5px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 21px;
+  border: 1px solid var(--black);
+  border-radius: 5px;
+}
+
+.component__input:focus {
+  box-shadow: 0 0 2px 2px var(--dark-grey);
+  outline: none;
 }
 
 .pagination {
   width: max-content;
   max-width: 80%;
-  margin: 0 auto 5px;
+  margin: 0 auto 10px;
 }
 
 .pagination__list {
@@ -40,26 +60,34 @@
 }
 
 .pagination__button {
-  padding: 10px;
+  min-width: 28px;
+  padding: 8px 5px;
+  font-family: inherit;
   color: var(--grey);
   border: none;
   border-radius: 10px;
   background: none;
 }
 
-.pagination__button:not(:disabled):hover {
+.pagination__button:enabled:hover {
   cursor: pointer;
   color: var(--dark-grey);
   background-color: var(--very-light-grey);
 }
 
-.pagination__button:not(:disabled):active {
+.pagination__button:enabled:active {
   background-color: var(--lightest-grey);
 }
 
-.pagination__button--number:disabled {
+.pagination__button:disabled {
   color: var(--black);
   font-weight: bold;
+}
+
+.pagination__button:focus {
+  color: var(--dark-grey);
+  box-shadow: 0 0 2px 2px var(--dark-grey);
+  outline: none;
 }
 
 .table {
@@ -68,23 +96,40 @@
   border-collapse: collapse;
 }
 
+.table__th {
+  padding: 0;
+}
+
 .table__td,
 .table__th {
   border: 1px solid var(--grey);
 }
 
-.table__td,
-.table__th {
+.table__td {
   padding: 3px 10px;
 }
 
-.table__th:hover {
-  background-color: var(--very-light-grey);
+.table__sort-button {
+  width: 100%;
+  padding: 3px 10px;
+  font: inherit;
+  background-color: var(--transparent);
+  border: none;
+  border-radius: 0;
+}
+
+.table__sort-button:hover {
+  background-color: var(--lightest-grey);
   cursor: pointer;
 }
 
-.table__th:active {
+.table__sort-button:active {
   background-color: var(--lightest-grey);
+}
+
+.table__sort-button:focus {
+  box-shadow: inset 0 0 2px 2px var(--dark-grey);
+  outline: none;
 }
 
 .table__arrow {
@@ -95,10 +140,10 @@
   color: var(--black);
 }
 
-.table__th:hover .table__arrow {
+.table__sort-button:hover .table__arrow {
   color: var(--dark-grey);
 }
 
-.table__th:active .table__arrow {
+.table__sort-button:active .table__arrow {
   color: var(--grey);
 }

@@ -90,6 +90,10 @@
   outline: none;
 }
 
+.pagination__button:focus:active {
+  box-shadow: none;
+}
+
 .table {
   width: max-content;
   margin: 0 auto;
